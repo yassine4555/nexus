@@ -1,15 +1,35 @@
-from flask import Flask, jsonify, request
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
-from models import db, User  # Importe tes modèles
+from flask import Flask, jsonify
+from flask_jwt_extended import JWTManager
+from models import db
 from flask_migrate import Migrate
+import os
+from datetime import timedelta
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://user:password@localhost/dbname'  # Remplace par tes creds (ou via env pour Docker)
+# Use environment variables with safe defaults for local dev
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'postgresql://youruser:yourpassword@localhost/meetingdb')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['JWT_SECRET_KEY'] = 'your-secret-key'  # Change ça en prod !
+app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'change-me')
+# Configure token expiry via environment (hours)
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=int(os.getenv('JWT_EXP_HOURS', '1')))
 
 db.init_app(app)
 jwt = JWTManager(app)
 migrate = Migrate(app, db)
 
-# Tes routes vont ici (voir ci-dessous)
+# Register blueprints (auth, hr)
+try:
+	from blueprints.auth import auth_bp, hr_bp
+	app.register_blueprint(auth_bp)
+	app.register_blueprint(hr_bp)
+except Exception:
+	# Blueprint import/register will fail if packages are missing during initial setup
+	pass
+
+
+@app.route('/')
+def index():
+	return jsonify(status=200, message='Nexus API'), 200
