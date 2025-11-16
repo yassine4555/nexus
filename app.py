@@ -17,7 +17,7 @@ from flask_migrate import Migrate
 
 from config import get_config
 from models import db
-from routes import auth_bp, hr_bp
+from routes import auth_bp, hr_bp, users_bp
 
 
 def create_app(config_name=None):
@@ -44,6 +44,7 @@ def create_app(config_name=None):
     # Register blueprints
     app.register_blueprint(auth_bp)
     app.register_blueprint(hr_bp)
+    app.register_blueprint(users_bp)
     
     # Register error handlers
     register_error_handlers(app)
