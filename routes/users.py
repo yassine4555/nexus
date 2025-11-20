@@ -1,10 +1,10 @@
 """User management routes for CRUD operations."""
 
 from flask import Blueprint, request, jsonify
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask_jwt_extended import jwt_required
 from models import User, db
 from utils.validators import validate_email, validate_password
-from utils.decorators import role_required
+from utils.decorators import role_required, get_current_user_id
 
 users_bp = Blueprint('users', __name__, url_prefix='/users')
 
@@ -14,7 +14,7 @@ users_bp = Blueprint('users', __name__, url_prefix='/users')
 def get_all_users():
     """Get all users (requires authentication)."""
     try:
-        current_user_id = get_jwt_identity()
+        current_user_id = get_current_user_id()
         current_user = User.query.get(current_user_id)
         
         if not current_user:
@@ -45,7 +45,7 @@ def get_all_users():
 def get_user(user_id):
     """Get specific user details."""
     try:
-        current_user_id = get_jwt_identity()
+        current_user_id = get_current_user_id()
         current_user = User.query.get(current_user_id)
         
         if not current_user:
@@ -84,7 +84,7 @@ def get_user(user_id):
 def update_user(user_id):
     """Update user details."""
     try:
-        current_user_id = get_jwt_identity()
+        current_user_id = get_current_user_id()
         current_user = User.query.get(current_user_id)
         
         if not current_user:
@@ -117,6 +117,8 @@ def update_user(user_id):
             user.last_name = data['last_name'].strip() or None
         if 'address' in data:
             user.address = data['address'].strip() or None
+        if 'date_of_birth' in data:
+            user.date_of_birth = data['date_of_birth'].strip() or None
         
         # Fields only HR can update
         if can_update_all:
@@ -178,7 +180,7 @@ def delete_user(user_id):
             return jsonify(status=404, message='User not found'), 404
         
         # Prevent deleting yourself
-        current_user_id = get_jwt_identity()
+        current_user_id = get_current_user_id()
         if user_id == current_user_id:
             return jsonify(status=400, message='Cannot delete your own account'), 400
         
@@ -200,7 +202,7 @@ def delete_user(user_id):
 def get_current_user():
     """Get current authenticated user's details."""
     try:
-        current_user_id = get_jwt_identity()
+        current_user_id = get_current_user_id()
         user = User.query.get(current_user_id)
         
         if not user:
@@ -221,7 +223,7 @@ def get_current_user():
 def update_current_user():
     """Update current authenticated user's details."""
     try:
-        current_user_id = get_jwt_identity()
+        current_user_id = get_current_user_id()
         user = User.query.get(current_user_id)
         
         if not user:
@@ -239,6 +241,8 @@ def update_current_user():
             user.last_name = data['last_name'].strip() or None
         if 'address' in data:
             user.address = data['address'].strip() or None
+        if 'date_of_birth' in data:
+            user.date_of_birth = data['date_of_birth'].strip() or None
         
         # Password update
         if 'password' in data:

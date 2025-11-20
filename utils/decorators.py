@@ -6,6 +6,17 @@ from flask_jwt_extended import get_jwt_identity
 from models import User
 
 
+def get_current_user_id():
+    """
+    Get current user ID from JWT token and convert to integer.
+    
+    Returns:
+        int: User ID as integer
+    """
+    identity = get_jwt_identity()
+    return int(identity) if identity else None
+
+
 def role_required(*roles):
     """
     Decorator to require specific role(s) for accessing a route.
@@ -23,7 +34,7 @@ def role_required(*roles):
     def decorator(fn):
         @wraps(fn)
         def wrapper(*args, **kwargs):
-            current_user_id = get_jwt_identity()
+            current_user_id = get_current_user_id()
             current_user = User.query.get(current_user_id)
             
             if not current_user:

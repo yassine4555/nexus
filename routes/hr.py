@@ -1,10 +1,10 @@
 """HR routes for managing employees and teams."""
 
 from flask import Blueprint, request, jsonify
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask_jwt_extended import jwt_required
 from models import User, db
 from utils.validators import validate_email, validate_password
-from utils.decorators import role_required
+from utils.decorators import role_required, get_current_user_id
 
 hr_bp = Blueprint('hr', __name__, url_prefix='/hr')
 
@@ -80,7 +80,7 @@ def create_employee():
 def get_employees():
     """Get list of employees (HR can see all, managers see their team)."""
     try:
-        current_user_id = get_jwt_identity()
+        current_user_id = get_current_user_id()
         current_user = User.query.get(current_user_id)
         
         if current_user.role == 'hr':
@@ -108,7 +108,7 @@ def get_employees():
 def get_employee(employee_id):
     """Get specific employee details."""
     try:
-        current_user_id = get_jwt_identity()
+        current_user_id = get_current_user_id()
         current_user = User.query.get(current_user_id)
         
         employee = User.query.get(employee_id)
