@@ -1,0 +1,138 @@
+{
+  "b88fc52e-ccb0-4bdb-b977-313f14c51c49": {
+    "ID": "b88fc52e-ccb0-4bdb-b977-313f14c51c49",
+    "FirstName": "Test",
+    "LastName": "User",
+    "DateOfBirth": "1990-01-01",
+    "Email": "test@rg123mple.com",
+    "Address": "123 Test Lane, Testville, TX 75001",
+    "EmployeesList": [],
+    "Department": null,
+    "Role": "HR"
+  },
+  "0aff33f0-ec14-4317-a251-64843e11f5ac": {
+    "ID": "0aff33f0-ec14-4317-a251-64843e11f5ac",
+    "FirstName": "Test",
+    "LastName": "User",
+    "DateOfBirth": "1990-01-01",
+    "Email": "test@rg12zer3mple.com",
+    "Address": "123 Test Lane, Testville, TX 75001",
+    "EmployeesList": [
+      "58cac4db-9ba7-4337-a972-ded20a7a43d6",
+      "5d3b311f-a366-46e8-a969-f1ef920555f7",
+      "test@rgsssdfddle.com"
+    ],
+    "Department": null,
+    "Role": "MANAGER"
+  },
+  "f4c3fea1-a21a-4c59-a881-35cc11b84e87": {
+    "ID": "f4c3fea1-a21a-4c59-a881-35cc11b84e87",
+    "FirstName": "Test",
+    "LastName": "User",
+    "DateOfBirth": "1990-01-01",
+    "Email": "test@rg12zerzer3mple.com",
+    "Address": "123 Test Lane, Testville, TX 75001",
+    "EmployeesList": [],
+    "Department": null,
+    "Role": "EMPLOYER"
+  },
+  "bec4c177-183f-4f9e-afb3-fbb717a0456d": {
+    "ID": "bec4c177-183f-4f9e-afb3-fbb717a0456d",
+    "FirstName": "Test",
+    "LastName": "User",
+    "DateOfBirth": "1990-01-01",
+    "Email": "test@rgssszwsdzdd4zple.com",
+    "Address": "123 Test Lane, Testville, TX 75001",
+    "EmployeesList": [],
+    "Department": null,
+    "Role": "GUEST"
+  },
+  "847917c2-0562-460c-b7e7-b34d47763b9f": {
+    "ID": "847917c2-0562-460c-b7e7-b34d47763b9f",
+    "FirstName": "Test",
+    "LastName": "User",
+    "DateOfBirth": "1990-01-01",
+    "Email": "test@rgssszwsdzdd4zeeple.com",
+    "Address": "123 Test Lane, Testville, TX 75001",
+    "EmployeesList": [],
+    "Department": null,
+    "Role": "GUEST"
+  },
+  "0e8080cb-2a2e-4422-9eb4-0e03853e434b": {
+    "ID": "0e8080cb-2a2e-4422-9eb4-0e03853e434b",
+    "FirstName": "Test",
+    "LastName": "User",
+    "DateOfBirth": "1990-01-01",
+    "Email": "test@rgssszwsdzdd4ze4eple.com",
+    "Address": "123 Test Lane, Testville, TX 75001",
+    "EmployeesList": [],
+    "Department": null,
+    "Role": "GUEST"
+  },
+  "038fe1ac-c86f-4cba-b21c-199136e66753": {
+    "ID": "038fe1ac-c86f-4cba-b21c-199136e66753",
+    "FirstName": "Test",
+    "LastName": "User",
+    "DateOfBirth": "1990-01-01",
+    "Email": "test@rgssszwsdzdzzd4ze4eple.com",
+    "Address": "123 Test Lane, Testville, TX 75001",
+    "EmployeesList": [],
+    "Department": null,
+    "Role": "GUEST"
+  },
+  "6a155983-1662-4620-81d3-2b1325c89a9c": {
+    "ID": "6a155983-1662-4620-81d3-2b1325c89a9c",
+    "FirstName": "Test",
+    "LastName": "User",
+    "DateOfBirth": "1990-01-01",
+    "Email": "test@rgssszwsdfdfddzdzzd4ze4eple.com",
+    "Address": "123 Test Lane, Testville, TX 75001",
+    "EmployeesList": [],
+    "Department": null,
+    "Role": "GUEST"
+  },
+  "1ea6a028-7fae-4edf-9e96-084c6ddaa59b": {
+    "ID": "1ea6a028-7fae-4edf-9e96-084c6ddaa59b",
+    "FirstName": "Test",
+    "LastName": "User",
+    "DateOfBirth": "1990-01-01",
+    "Email": "test@rgssszwsdfdfddzdfdzzd4ze4eple.com",
+    "Address": "123 Test Lane, Testville, TX 75001",
+    "EmployeesList": [],
+    "Department": null,
+    "Role": "GUEST"
+  },
+  "58cac4db-9ba7-4337-a972-ded20a7a43d6": {
+    "ID": "58cac4db-9ba7-4337-a972-ded20a7a43d6",
+    "FirstName": "Test",
+    "LastName": "User",
+    "DateOfBirth": "1990-01-01",
+    "Email": "test@rgssszwsdfdfddzcsdfdzzd4ze4eple.com",
+    "Address": "123 Test Lane, Testville, TX 75001",
+    "EmployeesList": [],
+    "Department": null,
+    "Role": "GUEST"
+  },
+  "5d3b311f-a366-46e8-a969-f1ef920555f7": {
+    "ID": "5d3b311f-a366-46e8-a969-f1ef920555f7",
+    "FirstName": "Test",
+    "LastName": "User",
+    "DateOfBirth": "1990-01-01",
+    "Email": "test@rgssszwsdfdfddle.com",
+    "Address": "123 Test Lane, Testville, TX 75001",
+    "EmployeesList": [],
+    "Department": null,
+    "Role": "GUEST"
+  },
+  "94a93198-9046-4c51-b38b-e228da7095af": {
+    "ID": "94a93198-9046-4c51-b38b-e228da7095af",
+    "FirstName": "Test",
+    "LastName": "User",
+    "DateOfBirth": "1990-01-01",
+    "Email": "test@rgsssdfddle.com",
+    "Address": "123 Test Lane, Testville, TX 75001",
+    "EmployeesList": [],
+    "Department": null,
+    "Role": "GUEST"
+  }
+}
