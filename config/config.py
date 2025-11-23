@@ -34,6 +34,9 @@ class Config:
     # Server settings
     HOST = os.getenv('HOST', '127.0.0.1')
     PORT = int(os.getenv('PORT', '5001'))
+    
+    # Internal Security
+    INTERNAL_API_KEY = os.getenv('INTERNAL_API_KEY', 'nexus-internal-secret-key-123')
 
 
 class DevelopmentConfig(Config):

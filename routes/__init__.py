@@ -1,8 +1,6 @@
 """Routes package."""
 
-from routes.auth import auth_bp
-from routes.hr import hr_bp
 from routes.users import users_bp
-from routes.invite import invite_bp
+from routes.invites import invites_bp
 
-__all__ = ['auth_bp', 'hr_bp', 'users_bp','invite_bp']
+__all__ = ['users_bp', 'invites_bp']

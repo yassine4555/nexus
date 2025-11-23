@@ -17,7 +17,7 @@ from flask_migrate import Migrate
 
 from config import get_config
 from models import db
-from routes import auth_bp, hr_bp, users_bp , invite_bp
+#from routes import users_bp, invites_bp
 
 
 def create_app(config_name=None):
@@ -42,10 +42,9 @@ def create_app(config_name=None):
     migrate = Migrate(app, db)
     
     # Register blueprints
-    app.register_blueprint(auth_bp)
-    app.register_blueprint(hr_bp)
-    app.register_blueprint(users_bp)
-    app.register_blueprint(invite_bp)
+    # Register blueprints
+    #app.register_blueprint(users_bp)
+    #app.register_blueprint(invites_bp)
     
     # Register error handlers
     register_error_handlers(app)

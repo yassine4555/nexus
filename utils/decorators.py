@@ -1,51 +1,22 @@
 """Custom decorators for route protection."""
 
 from functools import wraps
-from flask import jsonify
-from flask_jwt_extended import get_jwt_identity
-from models import User
+from flask import request, jsonify, current_app
 
-
-def get_current_user_id():
+def require_api_key(fn):
     """
-    Get current user ID from JWT token and convert to integer.
-    
-    Returns:
-        int: User ID as integer
+    Decorator to require Internal API Key for accessing a route.
+    Replaces JWT and Role-based security.
     """
-    identity = get_jwt_identity()
-    return int(identity) if identity else None
-
-
-def role_required(*roles):
-    """
-    Decorator to require specific role(s) for accessing a route.
-    
-    Usage:
-        @role_required('hr')
-        @role_required('hr', 'manager')
-    
-    Args:
-        *roles: Variable number of role names that are allowed
+    @wraps(fn)
+    def wrapper(*args, **kwargs):
+        api_key = request.headers.get('X-Internal-Key')
         
-    Returns:
-        Decorator function
-    """
-    def decorator(fn):
-        @wraps(fn)
-        def wrapper(*args, **kwargs):
-            current_user_id = get_current_user_id()
-            current_user = User.query.get(current_user_id)
+        if not api_key:
+            return jsonify(status=401, message='Missing API Key'), 401
             
-            if not current_user:
-                return jsonify(status=401, message='User not found'), 401
+        if api_key != current_app.config['INTERNAL_API_KEY']:
+            return jsonify(status=403, message='Invalid API Key'), 403
             
-            if current_user.role not in roles:
-                return jsonify(
-                    status=403,
-                    message=f'Access denied. Required role(s): {", ".join(roles)}'
-                ), 403
-            
-            return fn(*args, **kwargs)
-        return wrapper
-    return decorator
+        return fn(*args, **kwargs)
+    return wrapper
